@@ -6,7 +6,7 @@
             <a class="navbar-brand" href="{{route('admin.dashboard')}}">NoyonPro - Dashboard</a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse">
-         <h3 class="right">Back to home</h3>
+         <h3 class="btn btn-primary waves right">Back to home</h3>
         </div>
     </div>
 </nav>

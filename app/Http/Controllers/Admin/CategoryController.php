@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Tag;
+use App\Category;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class TagController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tag::latest()->get();
-        return view('admin.tag.index',compact('tags'));
+        $categories = Category::latest()->get();
+        return view('admin.category.index',compact('categories'));
     }
 
     /**
@@ -27,7 +27,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        return view('admin.tag.create');
+        return view('admin.category.create');
     }
 
     /**
@@ -39,14 +39,14 @@ class TagController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name' => 'required|unique:tags'
+            'name' => 'required|unique:categories'
         ]);
-        $tag = new Tag();
-        $tag->name = $request->name;
-        $tag->slug = str_slug($request->name);
-        $tag->save();
-        Toastr::success('Tag Successfully Saved :)' ,'Success');
-        return redirect()->route('admin.tag.index');
+        $category = new Category();
+        $category->name = $request->name;
+        $category->slug = str_slug($request->name);
+        $category->save();
+        Toastr::success('Category Successfully Saved :)' ,'Success');
+        return redirect()->route('admin.category.index');
     }
 
     /**
@@ -68,8 +68,8 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        $tag = Tag::find($id);
-        return view('admin.tag.edit',compact('tag'));
+        $category = Category::find($id);
+        return view('admin.category.edit',compact('category'));
     }
 
     /**
@@ -81,12 +81,12 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tag = Tag::find($id);
-        $tag->name = $request->name;
-        $tag->slug = str_slug($request->name);
-        $tag->save();
-        Toastr::success('Tag Successfully Updated :)','Success');
-        return redirect()->route('admin.tag.index');
+        $category = Category::find($id);
+        $category->name = $request->name;
+        $category->slug = str_slug($request->name);
+        $category->save();
+        Toastr::success('Category Successfully Updated :)','Success');
+        return redirect()->route('admin.category.index');
     }
 
     /**
@@ -97,8 +97,8 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        Tag::find($id)->delete();
-        Toastr::success('Tag Successfully Deleted :)','Success');
+        Category::find($id)->delete();
+        Toastr::success('Category Successfully Deleted :)','Success');
         return redirect()->back();
     }
 }

@@ -259,7 +259,7 @@
     	<section class="blog section-padding" data-scroll-index="5">
     		<div class="container">
     			<div class="row">
-    				
+
     				<div class="section-head full-width">
     					<h4 class="title">My Blog</h4>
     				</div>

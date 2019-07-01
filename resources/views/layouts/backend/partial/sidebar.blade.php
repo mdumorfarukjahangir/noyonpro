@@ -51,6 +51,14 @@
                     <span>Tag</span>
                 </a>
             </li>
+
+
+            <li class="{{ Request::is('admin/category*') ? 'active' : '' }}">
+                <a href="{{route('admin.category.index')}}">
+                    <i class="material-icons">label</i>
+                    <span>Category</span>
+                </a>
+            </li>
             @endif
 
 </aside>

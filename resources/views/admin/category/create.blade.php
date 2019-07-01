@@ -1,6 +1,6 @@
 @extends('layouts.backend.app')
 
-@section('title','Tag')
+@section('title','Category')
 
 @push('css')
 
@@ -16,7 +16,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                               Add new tag
+                               Add new category
 
                             </h2>
 
