@@ -16,6 +16,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap Core Css -->
+
     <link href="{{ asset('assets/backend/plugins/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
 
     <!-- Waves Effect Css -->
@@ -32,6 +33,8 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{ asset('assets/backend/css/themes/all-themes.css')}}" rel="stylesheet" />
+    <link rel="stylesheet" href="//cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+
     @stack('css')
 </head>
 <body class="theme-red">
@@ -66,23 +69,42 @@
     </section>
     @yield('content')
     <!-- Jquery Core Js -->
-    <script src="{{ asset('assets/backend/plugins/jquery/jquery.min.js')}}"></script>
+    <!-- Jquery Core Js -->
+<script src="{{ asset('assets/backend/plugins/jquery/jquery.min.js') }}"></script>
 
-    <!-- Bootstrap Core Js -->
-    <script src="{{ asset('assets/backend/plugins/bootstrap/js/bootstrap.js')}}"></script>
+<!-- Bootstrap Core Js -->
+<script src="{{ asset('assets/backend/plugins/bootstrap/js/bootstrap.js') }}"></script>
 
-    <!-- Select Plugin Js -->
-    <script src="{{ asset('assets/backend/plugins/bootstrap-select/js/bootstrap-select.js')}}"></script>
+<!-- Select Plugin Js -->
+{{--<script src="{{ asset('assets/backend/plugins/bootstrap-select/js/bootstrap-select.js') }}"></script>--}}
 
-    <!-- Slimscroll Plugin Js -->
-    <script src="{{ asset('assets/backend/plugins/jquery-slimscroll/jquery.slimscroll.js')}}"></script>
+<!-- Slimscroll Plugin Js -->
+<script src="{{ asset('assets/backend/plugins/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
 
-    <!-- Waves Effect Plugin Js -->
-    <script src="{{ asset('assets/backend/plugins/node-waves/waves.js')}}"></script>
+<!-- Waves Effect Plugin Js -->
+<script src="{{ asset('assets/backend/plugins/node-waves/waves.js') }}"></script>
 
 
-    <!-- Demo Js -->
-    <script src="{{ asset('assets/backend/js/demo.js')}}"></script>
+
+<!-- Custom Js -->
+<script src="{{ asset('assets/backend/js/admin.js') }}"></script>
+
+
+<!-- Demo Js -->
+<script src="{{ asset('assets/backend/js/demo.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+{!! Toastr::message() !!}
+<script>
+    @if($errors->any())
+        @foreach($errors->all() as $error)
+              toastr.error('{{ $error }}','Error',{
+                  closeButton:true,
+                  progressBar:true,
+               });
+        @endforeach
+    @endif
+</script>
+
     @stack('js')
 </body>
 </html>

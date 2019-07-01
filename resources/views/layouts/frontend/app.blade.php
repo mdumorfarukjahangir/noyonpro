@@ -14,7 +14,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <meta name="keywords" content="describe your website keyword" />
 <meta name="description" content="describe your website type" />
- 
+
 
 <!-- Title  -->
 <title>noyonpro</title>
@@ -27,10 +27,12 @@
 <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:100i,300,400,600,700" rel="stylesheet">
 
 <!-- Plugins -->
+
 <link rel="stylesheet" href="{{ asset('assets/frontend/css/plugins.css')}}" />
 
 <!-- Core Style Css -->
 <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css')}}" />
+
 
 </head>
 <body>
@@ -39,6 +41,7 @@
 @include('layouts.frontend.partial.footer')
 
         <!-- jQuery -->
+
 		<script src="{{ asset('assets/frontend/js/jquery-3.0.0.min.js')}}"></script>
 		<script src="{{ asset('assets/frontend/js/jquery-migrate-3.0.0.min.js')}}"></script>
 
@@ -77,3 +80,5 @@
 
       	<!-- custom scripts -->
         <script src="{{ asset('assets/frontend/js/scripts.js')}}"></script>
+
+
