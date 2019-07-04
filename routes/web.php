@@ -11,19 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', 'HomeController@index')->name('home');
+Route::post('/','MsgController@store')->name('msg.store');
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['as'=>'admin.', 'prefix' => 'admin','namespace' => 'Admin','middleware' => ['auth','admin']], function () {
     Route::get('dashboard','DashboardController@index')->name('dashboard');
     Route::resource('tag', 'TagController');
     Route::resource('category', 'CategoryController');
     Route::resource('post', 'PostController');
+    Route::resource('msg', 'MsgController');
+    Route::resource('address', 'AddressController');
+    Route::get('/pending/post','PostController@pending')->name('post.pending');
+    Route::put('/post/{id}/approve','PostController@approval')->name('post.approve');
 
 });
 

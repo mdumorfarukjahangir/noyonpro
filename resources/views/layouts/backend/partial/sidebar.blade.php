@@ -67,6 +67,20 @@
                 </a>
             </li>
 
+            <li class="{{ Request::is('admin/msg*') ? 'active' : '' }}">
+                <a href="{{route('admin.msg.index')}}">
+                    <i class="material-icons">message</i>
+                    <span>Message</span>
+                </a>
+            </li>
+
+            <li class="{{ Request::is('admin/address*') ? 'active' : '' }}">
+                <a href="{{route('admin.address.index')}}">
+                    <i class="material-icons">call</i>
+                    <span>Address</span>
+                </a>
+            </li>
+
 
 
             @endif

@@ -265,92 +265,35 @@
     				</div>
 
     				<div class="owl-carousel owl-theme">
-    					<div class="pitem">
-    						<div class="post-img">
-    							<a href="#0">
-    								<img src="img/blog/1.jpg" alt="">
-    							</a>
-    							<a href="#0" class="tag">WordPress</a>
-    						</div>
-    						<div class="content">
-    							<h3>
-    								<a href="#0">The Best WordPress Real Estate Themes & Plugins</a>
-    							</h3>
-    							<p>Real estate is an uber-competitive marketplace full of businesses competing for the same set of consumers. They're all looking for …</p>
-    							<div class="info">
-    								<span class="more">
-    									<a href="#0">Read More</a>
-    								</span>
-    								<span class="by">
-    									<a href="#0">By : Admin</a>
-    								</span>
-    							</div>
-    						</div>
-    					</div>
-    					<div class="pitem">
-    						<div class="post-img">
-    							<a href="#0">
-    								<img src="img/blog/2.jpg" alt="">
-    							</a>
-    							<a href="#0" class="tag">Trends</a>
-    						</div>
-    						<div class="content">
-    							<h3>
-    								<a href="#0">4 Deadly Sins of UI and UX Design You Need to Avoid</a>
-    							</h3>
-    							<p>It’s not wrong to say that perfection in web design is something that doesn't really exist. But that doesn't mean …</p>
-    							<div class="info">
-    								<span class="more">
-    									<a href="#0">Read More</a>
-    								</span>
-    								<span class="by">
-    									<a href="#0">By : Admin</a>
-    								</span>
-    							</div>
-    						</div>
-    					</div>
-    					<div class="pitem">
-    						<div class="post-img">
-    							<a href="#0">
-    								<img src="img/blog/3.jpg" alt="">
-    							</a>
-    							<a href="#0" class="tag">Trends</a>
-    						</div>
-    						<div class="content">
-    							<h3>
-    								<a href="#0">The Best Advice for Novice Web Designers in 2018</a>
-    							</h3>
-    							<p>When you're just getting started, it's hard to know what advice to listen to, and what to ignore. Finding your …</p>
-    							<div class="info">
-    								<span class="more">
-    									<a href="#0">Read More</a>
-    								</span>
-    								<span class="by">
-    									<a href="#0">By : Admin</a>
-    								</span>
-    							</div>
-    						</div>
-    					</div>
-    					<div class="pitem">
-    						<div class="post-img">
-								<img src="img/blog/4.jpg" alt="">
-    							<a href="#0" class="tag">ThemeForest</a>
-    						</div>
-    						<div class="content">
-    							<h3>
-    								<a href="#0">20 Stellar Science Fiction After Effects Templates</a>
-    							</h3>
-    							<p>We’ve assembled a collection of sci-fi After Effects templates most likely to induce awe and wonder and tried to pick …</p>
-    							<div class="info">
-    								<span class="more">
-    									<a href="#0">Read More</a>
-    								</span>
-    								<span class="by">
-    									<a href="#0">By : Admin</a>
-    								</span>
-    							</div>
-    						</div>
-    					</div>
+                            @foreach ($posts as $post)
+
+                            <div class="pitem">
+                                    <div class="post-img">
+                                        <a href="#0">
+                                            <img src="{{asset('storage/app/public/uploads/post/'.$post->image)}}" alt="">
+                                        </a>
+                                        @foreach ($categories as $category)
+                                        <a href="#0" class="tag">{{ $category->name }}</a>
+                                        @endforeach
+
+                                    </div>
+                                    <div class="content">
+                                        <h3>
+                                            <a href="#0">{{ $post->title }}</a>
+                                        </h3>
+                                    <p>{!! $post->body !!}</p>
+                                        <div class="info">
+                                            <span class="more">
+                                                <a href="#0">Read More</a>
+                                            </span>
+                                            <span class="by">
+                                                <a href="#0">Author - {{ $post->user->name }}</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+
     				</div>
 
     			</div>

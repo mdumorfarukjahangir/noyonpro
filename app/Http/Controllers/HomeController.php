@@ -1,9 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
-
+use App\Category;
+use App\Post;
+use App\Address;
 use Illuminate\Http\Request;
-
 class HomeController extends Controller
 {
     /**
@@ -11,18 +11,16 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('home');
+        $categories = Category::all();
+        $ads = Address::all();
+        $posts = Post::latest()->take(6)->get();
+        return view('welcome',compact('categories','posts','ads'));
     }
 }

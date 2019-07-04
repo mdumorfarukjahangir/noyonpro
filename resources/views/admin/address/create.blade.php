@@ -1,6 +1,6 @@
 @extends('layouts.backend.app')
 
-@section('title','Category')
+@section('title','Address')
 
 @push('css')
 
@@ -16,22 +16,35 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                               Add new category
+                               Add your address
 
                             </h2>
 
                         </div>
                         <div class="body">
-                        <form action="{{ route('admin.category.store')}}" method="POST">
+                        <form action="{{ route('admin.address.store')}}" method="POST">
                             @csrf
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" name="name" id="name" class="form-control">
-                                        <label class="form-label">Tag name</label>
+                                        <label class="form-label">Phone</label>
                                     </div>
                                 </div>
+                                <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" name="name" id="name" class="form-control">
+                                            <label class="form-label">Email</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" name="name" id="name" class="form-control">
+                                                <label class="form-label">Address</label>
+                                            </div>
+                                        </div>
+
                                 <br>
-                            <a  href="{{ route('admin.category.index')}}" class="btn btn-danger m-t-15 waves-effect">Back</a>
+                            <a  href="{{ route('admin.address.index')}}" class="btn btn-danger m-t-15 waves-effect">Back</a>
                                 <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
                             </form>
                         </div>
@@ -41,7 +54,6 @@
             <!-- Vertical Layout | With Floating Label -->
         </div>
         <section>
-            
 @endsection
 
 @push('js')
