@@ -21,6 +21,13 @@ Route::group(['as'=>'admin.', 'prefix' => 'admin','namespace' => 'Admin','middle
     Route::resource('tag', 'TagController');
     Route::resource('category', 'CategoryController');
     Route::resource('post', 'PostController');
+    Route::resource('brandname', 'BrandnameController');
+    Route::resource('portfolio', 'PortfolioController');
+    Route::resource('countdown', 'CountdownController');
+    Route::resource('intro', 'IntroController');
+    Route::resource('about', 'AboutController');
+    Route::resource('im', 'ImController');
+
     Route::resource('msg', 'MsgController');
     Route::resource('address', 'AddressController');
     Route::get('/pending/post','PostController@pending')->name('post.pending');

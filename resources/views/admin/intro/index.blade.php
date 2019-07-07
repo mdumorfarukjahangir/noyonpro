@@ -1,6 +1,6 @@
 @extends('layouts.backend.app')
 
-@section('title','Tag')
+@section('title','Intro')
 
 @push('css')
     <!-- JQuery DataTable Css -->
@@ -10,46 +10,50 @@
 @section('content')
 <section class="content">
     <div class="container-fluid">
+        <div class="block-header">
+            @if( $intros->count()<0 )
+            <a class="btn btn-primary waves-effect" href="{{ route('admin.intro.create') }}">
+                <i class="material-icons">add</i>
+                <span>Add Intro section</span>
+            </a>
+            @endif
+        </div>
         <!-- Exportable Table -->
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="header">
-                            @if( $addresses->count() == 0 )
-                            <a class="btn btn-primary waves-effect" href="{{ route('admin.address.create') }}">
-                                <i class="material-icons">add</i>
-                                <span>Add</span>
-                            </a>
-                            @endif
+                        <h2>
+                            You can change Backgound image & title dynamically
+
+                        </h2>
                     </div>
                     <div class="body">
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                 <thead>
                                 <tr>
-                                    <th>Phone</th>
-                                    <th>Email</th>
-                                    <th>Address</th>
+
+                                    <th>image</th>
+                                    <th>name</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tfoot>
                                 <tr>
-                                        <th>Phone</th>
-                                        <th>Email</th>
-                                        <th>Address</th>
+                                        <th>image</th>
+                                        <th>name</th>
                                         <th>Action</th>
                                 </tr>
                                 </tfoot>
                                 <tbody>
-                                    @foreach($addresses as $key=>$address)
+                                    @foreach ($intros as $intro)
                                         <tr>
 
-                                            <td>{{ $address->phone }}</td>
-                                            <td>{{ $address->email }}</td>
-                                            <td>{{ $address->address }}</td>
+                                            <td>{{ $intro->image }}</td>
+                                            <td>{{ $intro->name }}</td>
                                             <td class="text-center">
-                                                <a href="{{ route('admin.address.edit',$address->id) }}" class="btn btn-info waves-effect">
+                                                <a href="{{ route('admin.intro.edit',$intro->id) }}" class="btn btn-info waves-effect">
                                                     <i class="material-icons">edit</i>
                                                 </a>
                                             </td>
@@ -81,5 +85,4 @@
 
     <script src="{{ asset('assets/backend/js/pages/tables/jquery-datatable.js') }}"></script>
     <script src="https://unpkg.com/sweetalert2@7.19.1/dist/sweetalert2.all.js"></script>
-
 @endpush

@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Address;
+
+use App\Brandname;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class AddressController extends Controller
+class BrandnameController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +16,8 @@ class AddressController extends Controller
      */
     public function index()
     {
-        $addresses = Address::latest()->get();
-        return view('admin.address.index',compact('addresses'));
-
+        $brandnames = Brandname::latest()->get();
+        return view('admin.brandname.index',compact('brandnames'));
     }
 
     /**
@@ -27,7 +27,7 @@ class AddressController extends Controller
      */
     public function create()
     {
-        return view('admin.address.create');
+        return view('admin.brandname.create');
     }
 
     /**
@@ -39,17 +39,14 @@ class AddressController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'phone' => 'required|min:11',
-            'email' => 'required|email',
-            'address' => 'required',
+            'name' => 'required|unique:brandnames'
         ]);
-        $address = new Address();
-        $address->phone = $request->phone;
-        $address->email = $request->email;
-        $address->address = $request->address;
-        $address->save();
-        Toastr::success('Address Successfully Saved :)' ,'Success');
-        return redirect()->route('admin.address.index');
+        $brandname = new Brandname();
+        $brandname->name = $request->name;
+        $brandname->slug = str_slug($request->name);
+        $brandname->save();
+        Toastr::success('Brand name Successfully Saved :)' ,'Success');
+        return redirect()->route('admin.brandname.index');
     }
 
     /**
@@ -71,8 +68,8 @@ class AddressController extends Controller
      */
     public function edit($id)
     {
-        $address = Address::find($id);
-        return view('admin.address.edit',compact('address'));
+        $brandname = Brandname::find($id);
+        return view('admin.brandname.edit',compact('brandname'));
     }
 
     /**
@@ -84,13 +81,12 @@ class AddressController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $ads = Address::find($id);
-        $ads->phone = $request->phone;
-        $ads->email = $request->email;
-        $ads->address = $request->address;
-        $ads->save();
-        Toastr::success('Address Successfully Updated :)','Success');
-        return redirect()->route('admin.address.index');
+        $brandname = Brandname::find($id);
+        $brandname->name = $request->name;
+        $brandname->slug = str_slug($request->name);
+        $brandname->save();
+        Toastr::success('Brand name Successfully Updated :)','Success');
+        return redirect()->route('admin.brandname.index');
     }
 
     /**
@@ -101,6 +97,8 @@ class AddressController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Brandname::find($id)->delete();
+        Toastr::success('Brand name Successfully Deleted :)','Success');
+        return redirect()->back();
     }
 }

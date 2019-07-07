@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Category;
-use App\Notifications\AuthorPostApproved;
 use App\Notifications\NewPostNotify;
 use App\Subscriber;
 use App\Tag;
@@ -26,7 +25,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest()->get();
+        $posts = Post::all();
         return view('admin.post.index',compact('posts'));
     }
 
@@ -51,20 +50,21 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'title' => 'required',
-            // 'image' => 'required|mimes:png,jpg,gif',
+            'title' => 'required|unique:posts',
+            'image' => 'required|mimes:jpeg,bmp,png',
             'categories' => 'required',
             'tags' => 'required',
             'body' => 'required',
         ]);
         $image = $request->file('image');
+        // dd($image);
 
         $slug = str_slug($request->title);
 
         $file  = $request->file('image');
         $ex = $file->getClientOriginalExtension();
-        $imageName = time().".".$ex;
-        $img = Image::make($file)->resize(200, 200);
+        $imageName = $slug.time().".".$ex;
+        $img = Image::make($file)->resize(1620, 1080);
         $upload_path = public_path().'/uploads/post/';
         $img->save($upload_path.$imageName);
 
@@ -130,26 +130,44 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+
+
         $this->validate($request,[
             'title' => 'required',
-            'image' => 'image',
+            'image' => 'mimes:jpeg,bmp,png,gif',
             'categories' => 'required',
             'tags' => 'required',
             'body' => 'required',
         ]);
+
         $image = $request->file('image');
         $slug = str_slug($request->title);
         $file  = $request->file('image');
-        $ex = $file->getClientOriginalExtension();
-        $imageName = time().".".$ex;
-        $img = Image::make($file)->resize(200, 200);
-        $upload_path = public_path().'/uploads/post/';
-        $img->save($upload_path.$imageName);
+        if(isset($file))
+        {
+            $ex = $file->getClientOriginalExtension();
+            $imageName = time().".".$ex;
+            $img = Image::make($file)->resize(1620, 1080);
+            $upload_path = public_path().'/uploads/post/';
+            $img->save($upload_path.$imageName);
+
+             $image = $upload_path. $post->image;
+            // dd($image);
+        }
+        if(file_exists($image)){
+            @unlink($image);
+
+        }else{
+            $imageName = $post->image;
+        }
+
 
         $post->user_id = Auth::id();
         $post->title = $request->title;
         $post->slug = $slug;
+
         $post->image = $imageName;
+
         $post->body = $request->body;
         if(isset($request->status))
         {
@@ -204,9 +222,12 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        if (Storage::disk('public')->exists('post/'.$post->image))
-        {
-            Storage::disk('public')->delete('post/'.$post->image);
+        $upload_path = public_path().'/uploads/post/';
+        $image = $upload_path. $post->image;
+
+        if(file_exists($image)){
+            @unlink($image);
+
         }
         $post->categories()->detach();
         $post->tags()->detach();

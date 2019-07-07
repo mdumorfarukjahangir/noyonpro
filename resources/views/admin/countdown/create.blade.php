@@ -1,6 +1,6 @@
 @extends('layouts.backend.app')
 
-@section('title','Address')
+@section('title','Countdown')
 
 @push('css')
 
@@ -16,35 +16,37 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                               Add your address
+                               Add new (Seacrh https://fontawesome.com/icons?d=gallery)
 
                             </h2>
 
                         </div>
                         <div class="body">
-                        <form action="{{ route('admin.address.store')}}" method="POST">
+                        <form action="{{ route('admin.countdown.store')}}" method="POST">
                             @csrf
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" name="phone" id="name" class="form-control">
-                                        <label class="form-label">Phone</label>
+                                        <input type="text" name="name" id="name" placeholder="icon icon-name"class="form-control">
+                                        <label class="form-label">Name (Icon)</label>
                                     </div>
                                 </div>
+
                                 <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="email" name="email" id="name" class="form-control">
-                                            <label class="form-label">Email</label>
+                                            <input type="text" name="title" id="name" class="form-control">
+                                            <label class="form-label">Title</label>
                                         </div>
-                                    </div>
-                                    <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" name="address" id="name" class="form-control">
-                                                <label class="form-label">Address</label>
-                                            </div>
+                                </div>
+
+                                <div class="form-group form-float">
+                                        <div class="form-line">
+                                             <input type="text" name="number" id="name" class="form-control">
+                                            <label class="form-label">Number</label>
                                         </div>
+                                </div>
 
                                 <br>
-                            <a  href="{{ route('admin.address.index')}}" class="btn btn-danger m-t-15 waves-effect">Back</a>
+                            <a  href="{{ route('admin.countdown.index')}}" class="btn btn-danger m-t-15 waves-effect">Back</a>
                                 <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
                             </form>
                         </div>

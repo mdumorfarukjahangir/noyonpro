@@ -99,7 +99,7 @@
     	<!-- =====================================
     	==== Start Footer -->
     	<footer class="footer">
-    		<p>Copyright &copy; And Made With Love All Rights Reserved.</p>
+    		<p>Copyright &copy; noyonpro - 2019  All Rights Reserved.</p>
     	</footer>
     	<!-- End Footer ====
     	======================================= -->

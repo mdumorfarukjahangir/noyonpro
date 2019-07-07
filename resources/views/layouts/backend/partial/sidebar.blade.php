@@ -45,11 +45,42 @@
                 </a>
             </li>
 
+
+            <li class="{{ Request::is('admin/intro*') ? 'active' : '' }}">
+                <a href="{{route('admin.intro.index')}}">
+                    <i class="material-icons">assignment
+                    </i>
+                    <span>Intro</span>
+                </a>
+            </li>
+
+            <li class="{{ Request::is('admin/im*') ? 'active' : '' }}">
+                <a href="{{route('admin.im.index')}}">
+                    <i class="material-icons">accessibility
+                    </i>
+                    <span>Name</span>
+                </a>
+            </li>
+            <li class="{{ Request::is('admin/about*') ? 'active' : '' }}">
+                <a href="{{route('admin.about.index')}}">
+                    <i class="material-icons">note_add
+                    </i>
+                    <span>About</span>
+                </a>
+            </li>
+
             <li class="{{ Request::is('admin/post*') ? 'active' : '' }}">
                 <a href="{{route('admin.post.index')}}">
                     <i class="material-icons">library_books
                     </i>
                     <span>Post</span>
+                </a>
+            </li>
+            <li class="{{ Request::is('admin/countdown*') ? 'active' : '' }}">
+                <a href="{{route('admin.countdown.index')}}">
+                    <i class="material-icons">format_list_numbered
+                    </i>
+                    <span>Count Down</span>
                 </a>
             </li>
 
@@ -66,7 +97,21 @@
                     <span>Tag</span>
                 </a>
             </li>
+            <li class="{{ Request::is('admin/brandname*') ? 'active' : '' }}">
+                <a href="{{route('admin.brandname.index')}}">
+                    <i class="material-icons">branding_watermark
+                    </i>
+                    <span>Brands</span>
+                </a>
+            </li>
 
+            <li class="{{ Request::is('admin/portfolio*') ? 'active' : '' }}">
+                <a href="{{route('admin.portfolio.index')}}">
+                    <i class="material-icons">photo_library
+                    </i>
+                    <span>Portfolio</span>
+                </a>
+            </li>
             <li class="{{ Request::is('admin/msg*') ? 'active' : '' }}">
                 <a href="{{route('admin.msg.index')}}">
                     <i class="material-icons">message</i>

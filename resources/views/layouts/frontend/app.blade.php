@@ -20,7 +20,7 @@
 <title>noyonpro</title>
 
 <!-- Favicon -->
-<link rel="shortcut icon" href="{{ asset('assets/frontend/img/favicon.ico')}}" />
+<link rel="shortcut icon" href="{{ asset('assets/frontend/favicon.ico')}}" />
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700,800" rel="stylesheet" />

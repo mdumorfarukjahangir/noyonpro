@@ -74,7 +74,7 @@
                             </h2>
                         </div>
                         <div class="body">
-                            <img class="img-responsive thumbnail" src="{{ Storage::disk('public')->url('/uploads/post/'.$post->image) }}" alt="Post Image">
+                            <img class="img-responsive thumbnail" src="{{url('/uploads/post/'.$post->image)}}" alt="Post Image">
                         </div>
                     </div>
 

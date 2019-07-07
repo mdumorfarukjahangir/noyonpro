@@ -1,6 +1,6 @@
 @extends('layouts.backend.app')
 
-@section('title','Tag')
+@section('title','Count down')
 
 @push('css')
     <!-- JQuery DataTable Css -->
@@ -10,48 +10,60 @@
 @section('content')
 <section class="content">
     <div class="container-fluid">
+        <div class="block-header">
+            <a class="btn btn-primary waves-effect" href="{{ route('admin.countdown.create') }}">
+                <i class="material-icons">add</i>
+                <span>Add New countdown item</span>
+            </a>
+        </div>
         <!-- Exportable Table -->
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="header">
-                            @if( $addresses->count() == 0 )
-                            <a class="btn btn-primary waves-effect" href="{{ route('admin.address.create') }}">
-                                <i class="material-icons">add</i>
-                                <span>Add</span>
-                            </a>
-                            @endif
+                        <h2>
+                            All countdown items
+                            <span class="badge bg-blue">{{ $countdowns->count() }}</span>
+                        </h2>
                     </div>
                     <div class="body">
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                 <thead>
                                 <tr>
-                                    <th>Phone</th>
-                                    <th>Email</th>
-                                    <th>Address</th>
+
+                                    <th>Name</th>
+                                    <th>Title</th>
+                                    <th>Number</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tfoot>
                                 <tr>
-                                        <th>Phone</th>
-                                        <th>Email</th>
-                                        <th>Address</th>
+                                        <th>Name</th>
+                                        <th>Title</th>
+                                        <th>Number</th>
                                         <th>Action</th>
                                 </tr>
                                 </tfoot>
                                 <tbody>
-                                    @foreach($addresses as $key=>$address)
+                                    @foreach($countdowns as $key=>$countdown)
                                         <tr>
 
-                                            <td>{{ $address->phone }}</td>
-                                            <td>{{ $address->email }}</td>
-                                            <td>{{ $address->address }}</td>
+                                            <td>{{ $countdown->name }}</td>
+                                            <td>{{ $countdown->title }}</td>
+                                            <td>{{ $countdown->number }}</td>
                                             <td class="text-center">
-                                                <a href="{{ route('admin.address.edit',$address->id) }}" class="btn btn-info waves-effect">
+                                                <a href="{{ route('admin.countdown.edit',$countdown->id) }}" class="btn btn-info waves-effect">
                                                     <i class="material-icons">edit</i>
                                                 </a>
+                                                <button class="btn btn-danger waves-effect" type="button" onclick="deleteCountdown({{ $countdown->id }})">
+                                                    <i class="material-icons">delete</i>
+                                                </button>
+                                                <form id="delete-form-{{ $countdown->id }}" action="{{ route('admin.countdown.destroy',$countdown->id) }}" method="POST" style="display: none;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -81,5 +93,36 @@
 
     <script src="{{ asset('assets/backend/js/pages/tables/jquery-datatable.js') }}"></script>
     <script src="https://unpkg.com/sweetalert2@7.19.1/dist/sweetalert2.all.js"></script>
-
+    <script type="text/javascript">
+        function deleteCountdown(id) {
+            swal({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                confirmButtonClass: 'btn btn-success',
+                cancelButtonClass: 'btn btn-danger',
+                buttonsStyling: false,
+                reverseButtons: true
+            }).then((result) => {
+                if (result.value) {
+                    event.preventDefault();
+                    document.getElementById('delete-form-'+id).submit();
+                } else if (
+                    // Read more about handling dismissals
+                    result.dismiss === swal.DismissReason.cancel
+                ) {
+                    swal(
+                        'Cancelled',
+                        'Your data is safe :)',
+                        'error'
+                    )
+                }
+            })
+        }
+    </script>
 @endpush
