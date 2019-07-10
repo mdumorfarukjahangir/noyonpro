@@ -4,55 +4,11 @@
     		<div class="container">
     			<div class="row">
 
-    				<!-- Section-Head -->
-    				<div class="section-head full-width mb-50">
-    					<h4 class="title">Get In Touch</h4>
-                    </div>
-                    <div class="form full-width">
-                            <form action="{{ route('msg.store') }}" method="post">
-                                    @csrf
-                                    <div class="controls">
+                    <!-- Section-Head -->
+                    @if (!Route::is('post.details'))
+                    @include('layouts.frontend.partial.contact')
+                    @endif
 
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <input id="form_name" type="text" name="name" placeholder="Name *"  ">
-                                                    </div>
-                                                </div>
-
-                                                 <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <input id="form_email" type="email" name="email" placeholder="Email *" ">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <input id="form_subject" type="text" name="subject" placeholder="Subject">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <textarea id="form_message" name="message" placeholder="Your Message *" rows="4"  "></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <span class="buton buton-lg">
-                                                            <button type="submit" front="Send Message" back="&#xf35d;"></button>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                            </form>
-                    </div>
 
                     <div class="info full-width">
                         @foreach ($ads as $address)
@@ -101,9 +57,62 @@
     	<footer class="footer">
     		<p>Copyright &copy; noyonpro - 2019  All Rights Reserved.</p>
     	</footer>
-    	<!-- End Footer ====
-    	======================================= -->
+    	<!-- End Footer ==== -->
 
+        <!-- jQuery -->
+
+		<script src="{{ asset('assets/frontend/js/jquery-3.0.0.min.js')}}"></script>
+		<script src="{{ asset('assets/frontend/js/jquery-migrate-3.0.0.min.js')}}"></script>
+
+		<!-- popper.min -->
+		<script src="{{ asset('assets/frontend/js/popper.min.js')}}"></script>
+
+	  	<!-- bootstrap -->
+		<script src="{{ asset('assets/frontend/js/bootstrap.min.js')}}"></script>
+
+		<!-- scrollIt -->
+		<script src="{{ asset('assets/frontend/js/scrollIt.min.js')}}"></script>
+
+		<!-- animated.headline -->
+		<script src="{{ asset('assets/frontend/js/animated.headline.js')}}"></script>
+
+		<!-- jquery.waypoints.min -->
+		<script src="{{ asset('assets/frontend/js/jquery.waypoints.min.js')}}"></script>
+
+		<!-- jquery.counterup.min -->
+		<script src="{{ asset('assets/frontend/js/jquery.counterup.min.js')}}"></script>
+
+		<!-- owl carousel -->
+		<script src="{{ asset('assets/frontend/js/owl.carousel.min.js')}}"></script>
+
+		<!-- jquery.magnific-popup js -->
+		<script src="{{ asset('assets/frontend/js/jquery.magnific-popup.min.js')}}"></script>
+
+		<!-- stellar js -->
+		<script src="{{ asset('assets/frontend/js/jquery.stellar.min.js')}}"></script>
+
+      	<!-- isotope.pkgd.min js -->
+      	<script src="{{ asset('assets/frontend/js/isotope.pkgd.min.js')}}"></script>
+
+      	<!-- validator js -->
+      	<script src="{{ asset('assets/frontend/js/validator.js')}}"></script>
+
+      	<!-- custom scripts -->
+        <script src="{{ asset('assets/frontend/js/scripts.js')}}"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    {!! Toastr::message() !!}
+    <script>
+        @if($errors->any())
+            @foreach($errors->all() as $error)
+                toastr.error('{{ $error }}','Error',{
+                    closeButton:true,
+                    progressBar:true,
+                });
+            @endforeach
+        @endif
+    </script>
+      <script src="{{ asset('assets/frontend/js/script_single.js')}}"></script>
 
 </body>
 </html>

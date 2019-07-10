@@ -13,6 +13,7 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::post('/','MsgController@store')->name('msg.store');
+Route::get('post/{slug}','PostController@details')->name('post.details');
 Auth::routes();
 
 

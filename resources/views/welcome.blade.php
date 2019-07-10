@@ -79,28 +79,7 @@
     	<!-- End Hero ====
     	======================================= -->
 
-    	<!-- =====================================
-    	==== Start Numbers -->
-    	<div class="numbers bg-img" data-stellar-background-ratio="0.5" data-overlay-dark="8" data-background="img/b3.jpg">
-    		<div class="container">
 
-                <div class="row">
-                        @foreach ($countdowns as $countdown)
-                        <div class="col-lg-3 col-md-4">
-                            <div class="item mb-md50">
-                                <span class="{{ $countdown->name }}"></span>
-                                <h2 class="count">{{ $countdown->number }}</h2>
-                                <p>{{ $countdown->title }}</p>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-
-
-    		</div>
-    	</div>
-    	<!-- End Numbers ====
-    	======================================= -->
 
 
     	<!-- =====================================
@@ -159,6 +138,29 @@
 			</div>
 		</section>
     	<!-- End Portfolio ====
+        ======================================= -->
+
+        	<!-- =====================================
+    	==== Start Numbers -->
+    	<div class="numbers bg-img" data-stellar-background-ratio="0.5" data-overlay-dark="8" data-background="img/b3.jpg">
+    		<div class="container">
+
+                <div class="row">
+                        @foreach ($countdowns as $countdown)
+                        <div class="col-lg-3 col-md-4">
+                            <div class="item mb-md50">
+                                <span class="{{ $countdown->name }}"></span>
+                                <h2 class="count">{{ $countdown->number }}</h2>
+                                <p>{{ $countdown->title }}</p>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+
+
+    		</div>
+    	</div>
+    	<!-- End Numbers ====
     	======================================= -->
 
     	<!-- =====================================
@@ -185,7 +187,7 @@
                                     </div>
                                     <div class="content">
                                         <h3>
-                                            <a href="#0">{{ str_limit($post->title, 25)}}</a>
+                                        <a href="{{ route('post.details',$post->slug)}}">{{ str_limit($post->title, 25)}}</a>
                                         </h3>
                                         {!! str_limit($post->body, 30) !!}
                                         <div class="info">
