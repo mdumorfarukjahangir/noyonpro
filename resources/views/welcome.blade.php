@@ -171,8 +171,9 @@
 
     				<div class="section-head full-width">
     					<h4 class="title">My Blog</h4>
-    				</div>
 
+    				</div>
+                    <a class="allposts" href="{{ route('post.index')}}"><h6>All Posts</h6></a>
     				<div class="owl-carousel owl-theme">
                             @foreach ($posts as $post)
                             <div class="pitem">
@@ -201,8 +202,8 @@
                                     </div>
                                 </div>
                             @endforeach
+                    </div>
 
-    				</div>
 
     			</div>
     		</div>

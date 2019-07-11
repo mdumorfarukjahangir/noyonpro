@@ -14,6 +14,7 @@
 Route::get('/', 'HomeController@index')->name('home');
 Route::post('/','MsgController@store')->name('msg.store');
 Route::get('post/{slug}','PostController@details')->name('post.details');
+Route::get('posts','PostController@index')->name('post.index');
 Auth::routes();
 
 

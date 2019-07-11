@@ -687,6 +687,29 @@ span, a, a:hover {
 /* ----------------------------------------------------------------
 				09 Portfolio
 -----------------------------------------------------------------*/
+
+/* All posts
+*/
+a.allposts {
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 10px;
+    color: #0AB;
+    background-color: #E7E8D6;
+    /* color: black; */
+    width: 117px;
+    padding: 4px;
+}
+a.allposts:hover{
+    background-color: #000;
+    color: #1D7;
+}
+.pitem.col-md-5 {
+    padding: 8px;
+    margin: 29px;
+    box-sizing: 10px;
+    box-shadow: 2px 2px #09F;
+}
 .portfolio {
   overflow: hidden;
 }

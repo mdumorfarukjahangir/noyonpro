@@ -97,37 +97,39 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-          <div class="post-box">
-            <div class="post-thumb">
-              <img src="{{url('/uploads/post/'.$post->image)}}" class="img-fluid" alt="">
-            </div>
-            <div class="post-meta">
-              <h1 class="article-title">{{ $post->title}}</h1>
-              <ul>
-                <li>
-                  <span class="ion-ios-person"></span>
-                <a href="#">{{ $post->user->name}}</a>
-                </li>
-                <li>
-                  <span class="ion-pricetag"></span>
-                  @foreach ($tags as $tag)
-                  <a href="#">{{$tag->name}}</a>
-                  @endforeach
+            <div class="container row">
+                    @foreach ($posts as $post)
 
-                </li>
-                <li>
-                  <span class="ion-chatbox"></span>
-                  <li><span class="icon"><i class="fas fa-eye"></i></span>{{ $post->view_count }}</li>
-                </li>
-              </ul>
+                     <div class="pitem col-md-5">
+                             <div class="post-img">
+                                 <a href="#0">
+                                     <img height="50%" width="50%" src="{{ url('/uploads/post/'.$post->image)}}" alt="">
+                                 </a>
+                                 @foreach ($post->tags as $tag)
+                                 <a href="#0" class="tag">{{ $tag->name }}</a>
+                                 @endforeach
+
+                             </div>
+                             <div class="content">
+                                 <h3>
+                                 <a href="{{ route('post.details',$post->slug)}}">{{ str_limit($post->title, 25)}}</a>
+                                 </h3>
+                                 {!! str_limit($post->body, 30) !!}
+                                 {{-- <div class="info">
+                                     <span class="more">
+                                         <a href="#0">Read More</a>
+                                     </span>
+                                     <span class="by">
+                                         <a href="#0">Author - {{ $post->user->name }}</a>
+                                     </span>
+                                 </div> --}}
+                             </div>
+                         </div>
+
+                     @endforeach
             </div>
-            <div class="article-content">
-              <p>
-             {!!$post->body !!}
-              </p>
+
             </div>
-        </div>
-        </div>
         <div class="col-md-4">
           <div class="widget-sidebar sidebar-search">
             <h5 class="sidebar-title">Search</h5>
