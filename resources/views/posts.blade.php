@@ -33,45 +33,20 @@
 <link rel="stylesheet" href="{{ asset('assets/frontend/css/singlepostcss.css')}}" />
 </head>
 <body>
-    {{-- <nav class="navbar navbar-expand-lg">
-        <div class="container">
-        <img class="logo"  src={{ url('/assets/logo.png')}} alt="">
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a class="nav-link active" href="#" data-scroll-nav="0">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-scroll-nav="1">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-scroll-nav="3">Portfolio</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-scroll-nav="5">Blog</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-scroll-nav="6">Contact</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-    </nav> --}}
+
 <!--/ Nav Star /-->
-<nav class="navbar navbar-b navbar-expand-md fixed-top navbar-reduce" id="mainNav">
+<nav class="navbar navbar-expand-lg" id="mainNav">
         <div class="container">
           {{-- <a class="navbar-brand js-scroll" href="#page-top">BlasterUp</a> --}}
-        <a href="{{ route('home')}}"> <img class="logo"  src={{ url('/assets/logo.png')}} alt=""></a>
-          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-          <div class="navbar-collapse collapse justify-content-end" id="navbarDefault">
-            <ul class="navbar-nav">
+          <a href="{{ route('home')}}"> <img class="logo"  src={{ url('/assets/logo.png')}} alt=""></a>
+          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="icon-bar"><i class="fas fa-bars"></i></span>
+            </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
                 @foreach ($categories as $category)
                 <li class="nav-item">
-                        <a class="nav-link js-scroll" href="index.html">{{ $category->name }}</a>
+                        <a class="nav-link active" href="#">{{ $category->name }}</a>
                       </li>
                 @endforeach
 
@@ -100,29 +75,22 @@
             <div class="container row">
                     @foreach ($posts as $post)
 
-                     <div class="pitem col-md-5">
+                     <div class="pitem1 col-md-5">
                              <div class="post-img">
                                  <a href="#0">
                                      <img height="50%" width="50%" src="{{ url('/uploads/post/'.$post->image)}}" alt="">
                                  </a>
                                  @foreach ($post->tags as $tag)
-                                 <a href="#0" class="tag">{{ $tag->name }}</a>
+                                 <a class="poststag" href="#0" class="tag">{{ $tag->name }}</a>
                                  @endforeach
 
                              </div>
                              <div class="content">
                                  <h3>
-                                 <a href="{{ route('post.details',$post->slug)}}">{{ str_limit($post->title, 25)}}</a>
+                                 <a  class="poststitle" href="{{ route('post.details',$post->slug)}}">{{ str_limit($post->title, 25)}}</a>
                                  </h3>
                                  {!! str_limit($post->body, 30) !!}
-                                 {{-- <div class="info">
-                                     <span class="more">
-                                         <a href="#0">Read More</a>
-                                     </span>
-                                     <span class="by">
-                                         <a href="#0">Author - {{ $post->user->name }}</a>
-                                     </span>
-                                 </div> --}}
+
                              </div>
                          </div>
 

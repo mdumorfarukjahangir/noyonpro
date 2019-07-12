@@ -58,20 +58,18 @@
         </div>
     </nav> --}}
 <!--/ Nav Star /-->
-<nav class="navbar navbar-b navbar-expand-md fixed-top navbar-reduce" id="mainNav">
+<nav class="navbar navbar-expand-lg" id="mainNav">
         <div class="container">
           {{-- <a class="navbar-brand js-scroll" href="#page-top">BlasterUp</a> --}}
         <a href="{{ route('home')}}"> <img class="logo"  src={{ url('/assets/logo.png')}} alt=""></a>
-          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span></span>
-            <span></span>
-            <span></span>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon-bar"><i class="fas fa-bars"></i></span>
           </button>
-          <div class="navbar-collapse collapse justify-content-end" id="navbarDefault">
-            <ul class="navbar-nav">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
                 @foreach ($categories as $category)
                 <li class="nav-item">
-                        <a class="nav-link js-scroll" href="index.html">{{ $category->name }}</a>
+                        <a class="nav-link active" data-scroll-nav="0" href="#">{{ $category->name }}</a>
                       </li>
                 @endforeach
 
@@ -103,14 +101,14 @@
             </div>
             <div class="post-meta">
               <h1 class="article-title">{{ $post->title}}</h1>
-              <ul>
+              <ul >
                 <li>
                   <span class="ion-ios-person"></span>
                 <a href="#">{{ $post->user->name}}</a>
                 </li>
                 <li>
                   <span class="ion-pricetag"></span>
-                  @foreach ($tags as $tag)
+                  @foreach ($post->tags as $tag)
                   <a href="#">{{$tag->name}}</a>
                   @endforeach
 

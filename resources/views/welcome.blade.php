@@ -3,12 +3,22 @@
         	<!-- =====================================
         ==== Start Header -->
 
-    	<header class="header valign bg-img" data-scroll-index="0" data-overlay-dark="5" data-background="{{url('/uploads/intro/'.$intro->image)}}" data-stellar-background-ratio="0.5">
+
+
+        <header class="header valign bg-img" style="background: url('{{ asset('/uploads/intro/'.$intro->image)}}') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            background-size: cover;
+            -o-background-size: cover;" >
     		<div class="container">
     			<div class="row">
     				<div class="vertical-center full-width text-center caption">
-    					<h2>{{ $intro->name }}</h2>
-	    				<h1 class="cd-headline clip">
+
+    					<h1>
+
+                             {{ $intro->name }}
+                        </h1>
+	    				<h2 class="cd-headline clip">
 				            <span class="blc">I Am </span>
 				            <span class="cd-words-wrapper">
 				              <b class="is-visible">Md. Noyon Mia</b>
@@ -16,7 +26,7 @@
                               <b>{{ $im->name }}</b>
                               @endforeach
 				            </span>
-		          		</h1>
+		          		</h2>
     				</div>
     			</div>
     		</div>
@@ -27,6 +37,7 @@
 				</a>
 			</div>
     	</header>
+
     	<!-- End Header ====
     	======================================= -->
 
@@ -108,7 +119,7 @@
 					<!-- gallery -->
 					<div class="gallery full-width">
                         @foreach ($portfolios as $portfolio)
-                        <div class="col-md-6 col-lg-4 items {{"brand".$portfolio->brand_id}}">
+                        <div class="col-md-3 col-lg-3 items {{"brand".$portfolio->brand_id}}">
 							<div class="item-img">
 								<img  src="{{url('/uploads/item/'.$portfolio->image)}}"  alt="image">
 								<div class="item-img-overlay text-center valign">
@@ -128,11 +139,11 @@
 						<div class="clearfix"></div>
 					</div>
 
-					{{-- <div class="col-md-12 text-center">
+					<div class="col-md-12 text-center">
 						<span class="buton">
 						  <a href="#0" front="View All" back="&#xf06e;"></a>
 						</span>
-					</div> --}}
+					</div>
 
 				</div>
 			</div>
@@ -142,7 +153,7 @@
 
         	<!-- =====================================
     	==== Start Numbers -->
-    	<div class="numbers bg-img" data-stellar-background-ratio="0.5" data-overlay-dark="8" data-background="img/b3.jpg">
+    	<div class="numbers bg-img1" data-stellar-background-ratio="0.5" data-overlay-dark="8" data-background="img/b3.jpg">
     		<div class="container">
 
                 <div class="row">
@@ -173,7 +184,7 @@
     					<h4 class="title">My Blog</h4>
 
     				</div>
-                    <a class="allposts" href="{{ route('post.index')}}"><h6>All Posts</h6></a>
+
     				<div class="owl-carousel owl-theme">
                             @foreach ($posts as $post)
                             <div class="pitem">
@@ -193,7 +204,7 @@
                                         {!! str_limit($post->body, 30) !!}
                                         <div class="info">
                                             <span class="more">
-                                                <a href="#0">Read More</a>
+                                                <a href="{{ route('post.details',$post->slug)}}">Read More</a>
                                             </span>
                                             <span class="by">
                                                 <a href="#0">Author - {{ $post->user->name }}</a>
@@ -203,6 +214,10 @@
                                 </div>
                             @endforeach
                     </div>
+                    <div class="section-head full-width">
+    					<a class="allposts" href="{{ route('post.index')}}"><h6>All Posts</h6></a>
+
+    				</div>
 
 
     			</div>
