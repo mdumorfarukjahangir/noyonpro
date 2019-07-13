@@ -253,10 +253,11 @@
     overflow: hidden;
     vertical-align: top;
   }
-  .navbar .navbar-nav .nav-link:hover {
-    background-color: #000;
-    color: #fff;
-}
+
+    .navbar .navbar-nav .active {
+        color: #C49B66 !important;
+    }
+
 
   .cd-headline.clip .cd-words-wrapper::after {
     /* line */
@@ -395,15 +396,15 @@
   .navbar .icon-bar {
     color: #fff;
   }
-  .navbar .navbar-nav .nav-link {
-    font-size: 22px;
-    font-weight: 700;
-    color: #fffefe;
-    letter-spacing: -0.5px;
-    margin: 26px 3px;
-    -webkit-transition: all .5s;
-    transition: all .5s;
-    font-family: -webkit-body;
+    .navbar .navbar-nav .nav-link {
+        font-size: 13px;
+        font-weight: 600;
+        color: #eee;
+        letter-spacing: .5px;
+        margin: 15px 5px;
+        -webkit-transition: all .5s;
+        transition: all .5s;
+      }
   }
   .navbar .navbar-nav .active {
     color: #C49B66 !important;
@@ -466,19 +467,14 @@
   .header .caption {
     margin-top: 50px;
   }
-  .header .caption h1 {
-    font-weight: 700;
-    /* text-shadow: 3px 0px 2px rgba(0, 171, 0, 0.6); */
-    color: #fff;
-    font-family: -webkit-body;
-    color: fff;
-    text-size-adjust: 40px;
-
-  }
   .header .caption h2 {
+    font-weight: 200;
+    color: #fff !important;
+  }
+  .header .caption h1 {
     margin: 10px 0;
     font-size: 70px;
-    font-family: -webkit-body;
+    /* font-family: -webkit-body; */
     color: #fff;
   }
   .header .arrow {
@@ -744,7 +740,6 @@
       padding: 9px;
       margin: 27px;
       margin-left: 26px;
-      box-sizing: 10px;
 
   }
   .portfolio {
@@ -775,15 +770,11 @@
     top: 0;
     opacity: 1;
   }
-  .portfolio .items {
-    padding: 3px;
-    margin-bottom: 30px;
-    -webkit-box-shadow: 5px 5px 17px 5px rgba(0,0,0,0.5);
-    box-shadow: 5px 5px 17px 5px rgba(0,0,0,0.5);
-  }
+  .portfolio .items {height: 350px;width: 350px;-webkit-box-shadow: 1px 3px 9px 0px rgba(0,0,0,0.7);box-shadow: 0px 0px 0px 0px #cecec5;padding-bottom: -3px;margin-bottom: 36px;}
   .portfolio .item-img {
     position: relative;
     overflow: hidden;
+
   }
   .portfolio .item-img h5 {
     font-size: 18px;
@@ -1054,6 +1045,16 @@
     .mb-sm30 {
       margin-bottom: 30px;
     }
+    .portfolio .items {
+
+        height: 250px;
+        width: 250px;
+
+
+      }
   }
+  .postmenu{background-color: #fff;color: #0a0a0a !important;/* border: 1px solid #4e4e4e; */border-radius: 14px;text-transform: uppercase;}
+  .postmenu:hover{background-color: #DE8;color: #000203 !important;}
+    /*--/ Title Left /--*/
 
   /*# sourceMappingURL=style.css.map */

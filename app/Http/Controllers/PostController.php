@@ -37,4 +37,25 @@ class PostController extends Controller
         $randomposts = Post::all()->random(3);
         return view('single-post',compact('post','randomposts','ads','categories','tags','resentposts'));
     }
+
+    public function postByCategory($slug)
+    {
+        $categories = Category::all();
+        $ads = Address::all();
+        $tags = Tag::all();
+        $resentposts  = Post::latest()->get();
+        $category = Category::where('slug',$slug)->first();
+        $posts = $category->posts()->get();
+        return view('category',compact('categories','category','posts','ads','tags','resentposts'));
+    }
+    public function postByTag($slug)
+    {
+        $categories = Category::all();
+        $ads = Address::all();
+        $tags = Tag::all();
+        $resentposts  = Post::latest()->get();
+        $tag = Tag::where('slug',$slug)->first();
+        $posts = $tag->posts()->get();
+        return view('tag',compact('tag','posts','tags','resentposts','categories','ads'));
+    }
 }

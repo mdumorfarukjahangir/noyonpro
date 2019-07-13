@@ -38,8 +38,8 @@
 <nav class="navbar navbar-expand-lg" id="mainNav">
         <div class="container">
           {{-- <a class="navbar-brand js-scroll" href="#page-top">BlasterUp</a> --}}
-          <a href="{{ route('home')}}"><img class="logo" src="assets/logo.png" alt=""></a>
-    <a href="{{ route('home')}}"><img class="logonew" height="40px" width="60px" src="assets/logonew.png" alt=""></a>
+          <a href="{{ route('home')}}"> <img class="logo"  src={{ url('/assets/logo.png')}} alt=""></a>
+        <a href="{{ route('home')}}"><img class="logonew" height="40px" width="60px" src={{ url('/assets/logonew.png')}} alt=""></a>
           <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="icon-bar"><i class="fas fa-bars"></i></span>
             </button>
@@ -74,7 +74,8 @@
       <div class="row">
         <div class="col-md-8">
             <div class="container row">
-                    @foreach ($posts as $post)
+                    {{-- @foreach ($posts as $post) --}}
+                    @forelse($posts as $post)
 
                      <div class="pitem1 col-md-5">
                              <div class="post-img">
@@ -95,7 +96,15 @@
                              </div>
                          </div>
 
-                     @endforeach
+                         @empty
+                         <div class="col-lg-12 col-md-12">
+                             <div class="card h-100">
+                                 <div class="single-post post-style-1 p-2">
+                                 <strong>No Post Found :(</strong>
+                                 </div><!-- single-post -->
+                             </div><!-- card -->
+                         </div><!-- col-lg-4 col-md-6 -->
+                     @endforelse
             </div>
 
             </div>
@@ -159,7 +168,7 @@
               <ul>
                   @foreach ($tags as $tag)
                   <li>
-                    <a href="{{ route('tag.posts',$tag->slug)}}">{{ $tag->name }}</a>
+                  <a href="{{ route('tag.posts',$tag->slug)}}">{{ $tag->name }}</a>
                       </li>
                   @endforeach
 

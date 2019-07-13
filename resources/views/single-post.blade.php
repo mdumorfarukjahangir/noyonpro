@@ -28,8 +28,10 @@
 
 <!-- Core Style Css -->
 
-<link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css')}}" />
+
 <link rel="stylesheet" href="//cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+
+<link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css')}}" />
 <link rel="stylesheet" href="{{ asset('assets/frontend/css/singlepostcss.css')}}" />
 </head>
 <body>
@@ -62,6 +64,7 @@
         <div class="container">
           {{-- <a class="navbar-brand js-scroll" href="#page-top">BlasterUp</a> --}}
         <a href="{{ route('home')}}"> <img class="logo"  src={{ url('/assets/logo.png')}} alt=""></a>
+        <a href="{{ route('home')}}"><img class="logonew" height="40px" width="60px" src={{ url('/assets/logonew.png')}} alt=""></a>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon-bar"><i class="fas fa-bars"></i></span>
           </button>
@@ -69,7 +72,7 @@
             <ul class="navbar-nav ml-auto">
                 @foreach ($categories as $category)
                 <li class="nav-item">
-                        <a class="nav-link active" data-scroll-nav="0" href="#">{{ $category->name }}</a>
+                <a class="nav-link postmenu" href="{{ route('category.posts',$category->slug) }}">{{ $category->name }}</a>
                       </li>
                 @endforeach
 
@@ -186,7 +189,7 @@
               <ul>
                   @foreach ($tags as $tag)
                   <li>
-                  <a href="#">{{ $tag->name }}</a>
+                    <a href="{{ route('tag.posts',$tag->slug)}}">{{ $tag->name }}</a>
                       </li>
                   @endforeach
 

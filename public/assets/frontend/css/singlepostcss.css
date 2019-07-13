@@ -79,7 +79,7 @@ body {
   }
 
   .overlay-mf {
-    background-color: #0078ff;
+    /* background-color: #ffffff; */
   }
 
   .overlay-mf {
@@ -152,7 +152,8 @@ body {
     background-color: #0078ff;
     margin: 0 auto;
   }
-
+.postmenu{background-color: #fff;color: #0a0a0a !important;/* border: 1px solid #4e4e4e; */border-radius: 14px;text-transform: uppercase;}
+.postmenu:hover{background-color: #DE8;color: #000203 !important;}
   /*--/ Title Left /--*/
 
   .title-box-2 {
@@ -601,14 +602,14 @@ body {
   }
 
   .intro .overlay-itro {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color:#cde1f8;
     position: absolute;
     top: 0;
     left: 0px;
     padding: 0;
     height: 100%;
     width: 100%;
-    opacity: .9;
+    opacity: .1;
   }
 
   .intro .intro-title {
@@ -641,7 +642,7 @@ body {
 
   .intro-single .breadcrumb {
     background-color: transparent;
-    color: #0078ff;
+    color: #cde1f8;
   }
 
   .intro-single .breadcrumb .breadcrumb-item:before {
@@ -686,7 +687,7 @@ body {
 
   .skill-mf .progress .progress-bar {
     height: .7rem;
-    background-color: #0078ff;
+    background-color: #cde1f8;
   }
 
   /*======================================

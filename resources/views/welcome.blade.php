@@ -14,11 +14,11 @@
     			<div class="row">
     				<div class="vertical-center full-width text-center caption">
 
-    					<h1>
+    					<h2>
 
                              {{ $intro->name }}
-                        </h1>
-	    				<h2 class="cd-headline clip">
+                        </h2>
+	    				<h1 class="cd-headline clip">
 				            <span class="blc">I Am </span>
 				            <span class="cd-words-wrapper">
 				              <b class="is-visible">Md. Noyon Mia</b>
@@ -26,7 +26,7 @@
                               <b>{{ $im->name }}</b>
                               @endforeach
 				            </span>
-		          		</h2>
+		          		</h1>
     				</div>
     			</div>
     		</div>
@@ -119,8 +119,8 @@
 					<!-- gallery -->
 					<div class="gallery full-width">
                         @foreach ($portfolios as $portfolio)
-                        <div class="col-md-3 col-lg-3 items {{"brand".$portfolio->brand_id}}">
-							<div class="item-img">
+                        <div class="col-md-3 col-lg-4 items {{"brand".$portfolio->brand_id}}">
+							<div class="item-img"  >
 								<img  src="{{url('/uploads/item/'.$portfolio->image)}}"  alt="image">
 								<div class="item-img-overlay text-center valign">
 									<div class="overlay-info vertical-center full-width">
