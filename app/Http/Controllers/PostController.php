@@ -12,7 +12,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::take(5)->inRandomOrder()->get();
         $ads = Address::all();
         $tags = Tag::all();
         $resentposts  = Post::latest()->get();
@@ -33,14 +33,14 @@ class PostController extends Controller
 
 
         $resentposts  = Post::latest()->get();
-        $categories = Category::all();
+        $categories = Category::take(5)->inRandomOrder()->get();
         $randomposts = Post::all()->random(3);
         return view('single-post',compact('post','randomposts','ads','categories','tags','resentposts'));
     }
 
     public function postByCategory($slug)
     {
-        $categories = Category::all();
+        $categories = Category::take(5)->inRandomOrder()->get();
         $ads = Address::all();
         $tags = Tag::all();
         $resentposts  = Post::latest()->get();
@@ -50,7 +50,7 @@ class PostController extends Controller
     }
     public function postByTag($slug)
     {
-        $categories = Category::all();
+        $categories = Category::take(5)->inRandomOrder()->get();
         $ads = Address::all();
         $tags = Tag::all();
         $resentposts  = Post::latest()->get();

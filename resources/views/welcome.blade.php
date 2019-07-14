@@ -139,11 +139,11 @@
 						<div class="clearfix"></div>
 					</div>
 
-					<div class="col-md-12 text-center">
+					{{-- <div class="col-md-12 text-center">
 						<span class="buton">
 						  <a href="#0" front="View All" back="&#xf06e;"></a>
 						</span>
-					</div>
+					</div> --}}
 
 				</div>
 			</div>
@@ -193,7 +193,7 @@
                                             <img src="{{ url('/uploads/post/'.$post->image)}}" alt="">
                                         </a>
                                         @foreach ($post->categories as $category)
-                                        <a href="#0" class="tag">{{ $category->name }}</a>
+                                        <a href="{{ route('category.posts',$category->slug) }}" class="tag">{{ $category->name }}</a>
                                         @endforeach
 
                                     </div>

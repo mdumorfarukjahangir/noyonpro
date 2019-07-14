@@ -1,10 +1,10 @@
 <?php
-
+namespace App\Http\Controllers;
 use App\Post;
 use App\Address;
 use App\Tag;
 use App\Category;
-namespace App\Http\Controllers;
+
 
 use Illuminate\Http\Request;
 
@@ -12,12 +12,14 @@ class SearchController extends Controller
 {
     public function search(Request $request)
     {
-        $categories = Category::all();
+        // return $request->all();
+        $categories = Category::take(5)->inRandomOrder()->get();
+
         $ads = Address::all();
         $tags = Tag::all();
         $resentposts  = Post::latest()->get();
         $query = $request->input('query');
-        $posts = Post::where('title','LIKE',"%$query%")->approved()->published()->get();
-        return view('search',compact('posts','query','categories','ads','tags','recentpost'));
+        $posts = Post::where('title','LIKE',"%$query%")->get();
+        return view('search',compact('posts','query','categories','ads','tags','resentposts'));
     }
 }
