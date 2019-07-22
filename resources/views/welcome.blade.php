@@ -90,10 +90,7 @@
     	<!-- End Hero ====
     	======================================= -->
 
-
-
-
-    	<!-- =====================================
+            	<!-- =====================================
     	==== Start Portfolio -->
     	<section class="portfolio section-padding" data-scroll-index="3">
 			<div class="container">
@@ -110,17 +107,19 @@
 
 					<!-- filter links -->
 					<div class="filtering text-center mb-50">
-                        <span data-filter='*' class="active">All</span>
+						<span data-filter='*' class="active">All</span>
                         @foreach ($brands as $brand)
-                         <span data-filter='.{{ "brand".$brand->id}}'>{{ $brand->name}}</span>
+                        <span data-filter='.{{ "brand".$brand->id}}'>{{ $brand->name}}</span>
                         @endforeach
 					</div>
 
 					<!-- gallery -->
 					<div class="gallery full-width">
+
                         @foreach ($portfolios as $portfolio)
-                        <div class="col-md-3 col-lg-4 items {{"brand".$portfolio->brand_id}}">
-							<div class="item-img"  >
+						<!-- gallery item -->
+						<div class="col-sm-6 col-md-6 col-lg-4 items {{"brand".$portfolio->brand_id}}">
+							<div class="item-img">
 								<img  src="{{url('/uploads/item/'.$portfolio->image)}}"  alt="image">
 								<div class="item-img-overlay text-center valign">
 									<div class="overlay-info vertical-center full-width">
@@ -132,24 +131,24 @@
 									</a>
 								</div>
 							</div>
-						</div>
+                        </div>
                         @endforeach
-						<!-- gallery item -->
+
 
 						<div class="clearfix"></div>
 					</div>
 
-					{{-- <div class="col-md-12 text-center">
+					<div class="col-md-12 text-center">
 						<span class="buton">
 						  <a href="#0" front="View All" back="&#xf06e;"></a>
 						</span>
-					</div> --}}
+					</div>
 
 				</div>
 			</div>
 		</section>
     	<!-- End Portfolio ====
-        ======================================= -->
+    	======================================= -->
 
         	<!-- =====================================
     	==== Start Numbers -->
@@ -189,7 +188,7 @@
                             @foreach ($posts as $post)
                             <div class="pitem">
                                     <div class="post-img">
-                                        <a href="#0">
+                                        <a href="{{ route('post.details',$post->slug)}}">
                                             <img src="{{ url('/uploads/post/'.$post->image)}}" alt="">
                                         </a>
                                         @foreach ($post->categories as $category)

@@ -12,6 +12,7 @@ class PostController extends Controller
 {
     public function index()
     {
+
         $categories = Category::take(5)->inRandomOrder()->get();
         $ads = Address::all();
         $tags = Tag::all();
@@ -21,7 +22,9 @@ class PostController extends Controller
     }
     public function details($slug)
     {
-        $post = Post::where('slug',$slug)->first();
+
+
+        $post = Post::where('slug',$slug)->firstOrFail();
         $blogKey = 'blog_' . $post->id;
         if (!Session::has($blogKey)) {
             $post->increment('view_count');
@@ -35,6 +38,7 @@ class PostController extends Controller
         $resentposts  = Post::latest()->get();
         $categories = Category::take(5)->inRandomOrder()->get();
         $randomposts = Post::all()->random(3);
+
         return view('single-post',compact('post','randomposts','ads','categories','tags','resentposts'));
     }
 

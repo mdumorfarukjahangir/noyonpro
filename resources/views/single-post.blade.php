@@ -128,74 +128,33 @@
               </p>
             </div>
         </div>
+
+        <div class="ml-5">
+
+            <a class="btn btn-primary disabled " href="#">
+                    <span class="icon">Share</span>
+            </a>
+            <a class="btn btn-light" href="#">
+                <span class="icon"><i class="fab fa-facebook-f"></i></span>
+            </a>
+            <a class="btn btn-light" href="#">
+                <span class="icon"><i class="fab fa-twitter"></i></span>
+            </a>
+            <a class="btn btn-light" href="#">
+                <span class="icon"><i class="fab fa-instagram"></i></span>
+            </a>
+            <a class="btn btn-light" href="#">
+                <span class="icon"><i class="fab fa-linkedin"></i></span>
+            </a>
+        </div>
         </div>
         <div class="col-md-4">
-            <div class="widget-sidebar sidebar-search">
-              <h5 class="sidebar-title">Search</h5>
-              <div class="sidebar-content">
-              <form method="GET" action="{{ route('search')}}">
-                  <div class="input-group">
-                    <input type="text" name="query" class="form-control" placeholder="Search for..." aria-label="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-secondary btn-search" type="button">
-                        <span class="ion-android-search"></span>
-                      </button>
-                    </span>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <div class="widget-sidebar">
-              <h5 class="sidebar-title">Recent Post</h5>
-              <div class="sidebar-content">
-                <ul class="list-sidebar">
 
-                      @foreach ($resentposts as $resentpost)
+                @include('layouts/frontend/partial/search')
+                @include('layouts/frontend/partial/recentpost')
+                @include('layouts/frontend/partial/mostview')
+               @include('layouts/frontend/partial/tag')
 
-                      <li>
-                        <a href="{{ route('post.details',$resentpost->slug)}}">{{ $resentpost->title}}</a>
-                      </li>
-
-                      @endforeach
-
-                </ul>
-              </div>
-            </div>
-            <div class="widget-sidebar">
-              <h5 class="sidebar-title">Archives</h5>
-              <div class="sidebar-content">
-                <ul class="list-sidebar">
-                  <li>
-                    <a href="#">September, 2017.</a>
-                  </li>
-                  <li>
-                    <a href="#">April, 2017.</a>
-                  </li>
-                  <li>
-                    <a href="#">Nam quo autem exercitationem.</a>
-                  </li>
-                  <li>
-                    <a href="#">Atque placeat maiores nam quo autem</a>
-                  </li>
-                  <li>
-                    <a href="#">Nam quo autem exercitationem.</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="widget-sidebar widget-tags">
-              <h5 class="sidebar-title">Tags</h5>
-              <div class="sidebar-content">
-                <ul>
-                    @foreach ($tags as $tag)
-                    <li>
-                      <a href="{{ route('tag.posts',$tag->slug)}}">{{ $tag->name }}</a>
-                        </li>
-                    @endforeach
-
-                </ul>
-              </div>
-            </div>
           </div>
       </div>
     </div>

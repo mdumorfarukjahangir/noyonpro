@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 use App\Category;
 use App\Portfolio;
@@ -10,6 +11,8 @@ use App\Brandname;
 use App\About;
 use App\Im;
 use Illuminate\Http\Request;
+
+
 class HomeController extends Controller
 {
     /**

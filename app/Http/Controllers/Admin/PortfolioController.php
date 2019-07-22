@@ -59,7 +59,7 @@ class PortfolioController extends Controller
 
         $file  = $request->file('image');
         $ex = $file->getClientOriginalExtension();
-        $imageName = "item-".time().".".$ex;
+        $imageName = "item-".date('Y-m-d').time().".".$ex;
         $img = Image::make($file)->resize(300, 300);
         $upload_path = public_path().'/uploads/item/';
         $img->save($upload_path.$imageName);
@@ -124,7 +124,7 @@ class PortfolioController extends Controller
         $file  = $request->file('image');
         if(isset($file)){
             $ex = $file->getClientOriginalExtension();
-            $imageName = "item-".time().".".$ex;
+            $imageName = "item-".date('Y-m-d').time().".".$ex;
             $img = Image::make($file)->resize(300, 300);
             $upload_path = public_path().'/uploads/item/';
             $img->save($upload_path.$imageName);
